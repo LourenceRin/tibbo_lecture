@@ -21,10 +21,7 @@ public class Main
   
   public Boolean stringContains(String value, String subString)
   {
-      if(value.indexOf(subString)>=0)
-          return true;
-      else
-          return false;
+      return value.indexOf(subString)>=0;
   }
   
   @Override

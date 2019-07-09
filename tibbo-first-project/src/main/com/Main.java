@@ -13,39 +13,30 @@ public class Main
   public Integer plus(int[] array)
   {
     int sum = 0;
-    for (int i = 0; i < array.length; i++) sum = sum + array[i];
+    for (int i : array) {
+      sum += i;
+    }
     return sum;
   }
   
   public String encode(byte[] byteArray)
   {
-    String str = new String(byteArray);
-    return str;
+    return new String(byteArray);
   }
   
   public Boolean stringContains(String value, String subString)
   {
     String string = value, string1 = subString;
-
-    Boolean bool = true;
-    if (string.contains(string1)){
-      bool = true;
-    }else {
-      bool = false;
-    }
-    return bool;
+    return string.contains(string1);
   }
   @Override
   public String toString()
   {
-    //String className = this.getClass().getSimpleName();
-    String str = "This is the name of Main class"; //знаю что не то, пытаюсь переделать
-    return str;
+    return "This is the name of Main class";
   }
   
   public static Main getInstance()
   {
-    Main main = new Main();
-    return main;
+    return new Main();
   }
 }

@@ -18,9 +18,6 @@ public class MainTest extends TestCase
     Main main = new Main();
     int result = main.plus(MainTestHelper.INT_ARRAY);
     assertEquals(145962204, result);
-    //System.out.println(result);
-
-
   }
   
   @Test
@@ -29,7 +26,6 @@ public class MainTest extends TestCase
     //из набора байт получить строку
     Main main = new Main();
     String str = main.encode(MainTestHelper.STRING_ARRAY);
-    System.out.println(str);
     assertEquals(MainTestHelper.STRING_STRING, main.encode(MainTestHelper.STRING_ARRAY));
   }
   
@@ -37,8 +33,6 @@ public class MainTest extends TestCase
   {
     //вернуть имя класса в из toString
     Main main = new Main();
-    //String str = main.toString(MainTestHelper.MAIN_NAME);
-    //System.out.println(str);
     assertEquals(MainTestHelper.MAIN_NAME, main.toString());
   }
   

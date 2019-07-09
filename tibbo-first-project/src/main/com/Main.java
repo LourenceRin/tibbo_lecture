@@ -9,7 +9,8 @@ public class Main
   {
     System.out.println("Hello world!");
   }
-  
+
+  public static final String CONST = "This is the name of Main class";
   public Integer plus(int[] array)
   {
     int sum = 0;
@@ -26,13 +27,12 @@ public class Main
   
   public Boolean stringContains(String value, String subString)
   {
-    String string = value, string1 = subString;
-    return string.contains(string1);
+    return value.contains(subString);
   }
   @Override
   public String toString()
   {
-    return "This is the name of Main class";
+    return CONST;
   }
   
   public static Main getInstance()

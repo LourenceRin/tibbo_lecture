@@ -5,7 +5,6 @@ public class Main
   {
     System.out.println("Hello world!");
   }
-  
   public Integer plus(int[] array)
   {
       int summ=0;
@@ -18,7 +17,7 @@ public class Main
   
   public String encode(byte[] byteArray)
   {
-      String solution = new String(byte);
+      String solution = new String(byteArray);
       return solution;
   }
   
@@ -35,7 +34,7 @@ public class Main
   @Override
   public String toString()
   {
-      String solution = getClass().getName();
+      String solution = "This is the name of Main class";
       return solution;
   }
   

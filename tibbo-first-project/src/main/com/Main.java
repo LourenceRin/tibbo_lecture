@@ -9,17 +9,17 @@ public class Main
   public Integer plus(int[] array)
   {
       int summ=0;
-      for(int i=0;array.length;i++)
+      for(int i=0;i<array.length;i++)
       {
-          summ+=array[i]
+          summ+=array[i];
       }
-      return summ
+      return summ;
   }
   
   public String encode(byte[] byteArray)
   {
-      String solution = new String(byte)
-      return solution
+      String solution = new String(byte);
+      return solution;
   }
   
   public Boolean stringContains(String value, String subString)
@@ -35,7 +35,7 @@ public class Main
   public String toString()
   {
       String solution = getClass().getName();
-      return solution
+      return solution;
   }
   
   public static Main getInstance()

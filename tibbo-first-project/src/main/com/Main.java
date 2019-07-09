@@ -8,27 +8,39 @@ public class Main
   
   public Integer plus(int[] array)
   {
-    return null;
+      int summ=0;
+      for(int i=0;array.length;i++)
+      {
+          summ+=array[i]
+      }
+      return summ
   }
   
   public String encode(byte[] byteArray)
   {
-    return null;
+      String solution = new String(byte)
+      return solution
   }
   
   public Boolean stringContains(String value, String subString)
   {
-    return null;
+      int index = value.indexOf(subString);
+      if(index>=0)
+          return true;
+      else
+          return false;
   }
   
   @Override
   public String toString()
   {
-    return null;
+      String solution = getClass().getName();
+      return solution
   }
   
   public static Main getInstance()
   {
-    return null;
+      Main main = new Main();
+      return main;
   }
 }

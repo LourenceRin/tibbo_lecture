@@ -1,3 +1,7 @@
+import sun.awt.CharsetString;
+
+import java.nio.charset.Charset;
+import java.util.Arrays;
 
 public class Main
 {
@@ -8,27 +12,41 @@ public class Main
   
   public Integer plus(int[] array)
   {
-    return null;
+    int sum = 0;
+    for (int i = 0; i < array.length; i++) sum = sum + array[i];
+    return sum;
   }
   
   public String encode(byte[] byteArray)
   {
-    return null;
+    String str = new String(byteArray);
+    return str;
   }
   
   public Boolean stringContains(String value, String subString)
   {
-    return null;
+    String string = value, string1 = subString;
+
+    Boolean bool = true;
+    if (string.contains(string1)){
+      bool = true;
+    }else {
+      bool = false;
+    }
+    return bool;
   }
   
   @Override
   public String toString()
   {
-    return null;
+    //String className = this.getClass().getSimpleName();
+    String str = "This is the name of Main class"; //знаю что не то, пытаюсь переделать
+    return str;
   }
   
   public static Main getInstance()
   {
-    return null;
+    Main main = new Main();
+    return main;
   }
 }

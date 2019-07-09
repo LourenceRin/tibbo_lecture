@@ -41,6 +41,7 @@ public class MainTest extends TestCase
     //System.out.println(str);
     assertEquals(MainTestHelper.MAIN_NAME, main.toString());
   }
+
   
   @Test
   public void testContains()

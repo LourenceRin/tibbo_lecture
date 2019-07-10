@@ -2,6 +2,7 @@ import sun.awt.CharsetString;
 
 import java.nio.charset.Charset;
 import java.util.Arrays;
+package tibbo;
 
 public class Main
 {

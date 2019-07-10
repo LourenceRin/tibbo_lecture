@@ -1,5 +1,6 @@
 package tibbo.grep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface Grep
@@ -10,7 +11,8 @@ public interface Grep
   * 2) Создать RegExpGrep
   *
   * */
-  
+  List myArray = new ArrayList<String>();
+
   //проверка входит ли подстрока в сторку, либо regexp что то нашел;
   public void contains(String regExpOrSubstring, String value);
   

@@ -12,7 +12,7 @@ public interface Grep
   * */
   
   //проверка входит ли подстрока в сторку, либо regexp что то нашел;
-  public void contains(String regExpOrSubstring, String value);
+  public String contains(String regExpOrSubstring, String value);
   
   //вовращает список всех строк, которые подошли
   public List<String> getValuesList();
@@ -21,5 +21,5 @@ public interface Grep
   public void printAllValues();
   
   //вернуть размер списка
-  public Integer getValuesSize();
+  public int getValuesSize();
 }

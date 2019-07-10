@@ -4,7 +4,8 @@ import junit.framework.TestCase;
 
 public class TestGrep extends TestCase
 {
-  public void testGrep()
+
+ /* public void testGrep()
   {
     Grep stringGrep = GrepHelper.getInstance(0);
     stringGrep.contains("tibbo", "this is first tibbo string");
@@ -26,4 +27,6 @@ public class TestGrep extends TestCase
   {
     super.tearDown();
   }
+
+  */
 }

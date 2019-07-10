@@ -1,7 +1,3 @@
-import sun.awt.CharsetString;
-
-import java.nio.charset.Charset;
-import java.util.Arrays;
 package tibbo;
 
 public class Main
@@ -20,12 +16,12 @@ public class Main
     }
     return sum;
   }
-  
+
   public String encode(byte[] byteArray)
   {
     return new String(byteArray);
   }
-  
+
   public Boolean stringContains(String value, String subString)
   {
     return value.contains(subString);
@@ -35,7 +31,7 @@ public class Main
   {
     return CONST;
   }
-  
+
   public static Main getInstance()
   {
     return new Main();

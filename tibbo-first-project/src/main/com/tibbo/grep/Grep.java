@@ -7,7 +7,7 @@ public interface Grep
   /*
   * Реализовать интерфейс Grep;
   * 1) Создать класс StringGrep
-  * 2) Создать RegExpGrep
+  * 2) Создать StringGrep
   *
   * */
   
@@ -21,7 +21,8 @@ public interface Grep
   
   //распечатать в консоль все значения
   public void printAllValues();
-  
+
+
   //вернуть размер списка
   public Integer getValuesSize();
   

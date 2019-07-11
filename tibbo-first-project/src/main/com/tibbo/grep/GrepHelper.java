@@ -22,9 +22,7 @@ public class GrepHelper
       List<String> list = new ArrayList();
       String[] myList = value.split(splitSymbol);
       for(String i:myList)
-      {
           list.add(i);
-      }
       return list;
   }
 }

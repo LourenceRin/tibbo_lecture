@@ -1,12 +1,12 @@
-package tibbo;
+package tibbo.maintest;
 
 import java.nio.charset.StandardCharsets;
 
 public class MainTestHelper
 {
   public static final int[] INT_ARRAY = new int[14];
-  
-  static 
+
+  static
   {
     INT_ARRAY[0] = 101236;
     INT_ARRAY[1] = 1012536;
@@ -23,10 +23,10 @@ public class MainTestHelper
     INT_ARRAY[12]= 10654336;
     INT_ARRAY[13] = 10534236;
   }
-  
+
   public static String STRING_STRING = "new super pupper dupper string";
-  
+
   public static byte[] STRING_ARRAY = "new super pupper dupper string".getBytes(StandardCharsets.UTF_8);
 
-  public static String MAIN_NAME = "This is the name of tibbo.string.tibbo.Main class";
+  public static String MAIN_NAME = "This is the name of tibbo.Main.Main class";
 }

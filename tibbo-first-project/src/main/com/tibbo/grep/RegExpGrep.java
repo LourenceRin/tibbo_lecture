@@ -3,7 +3,7 @@ package tibbo.grep;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class RegExpGrep extends Grep
+public class RegExpGrep extends AbstractGrep
 {
     RegExpGrep(String regExpOrSubstring)
     {

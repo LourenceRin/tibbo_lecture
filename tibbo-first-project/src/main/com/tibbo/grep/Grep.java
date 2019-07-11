@@ -1,9 +1,8 @@
 package tibbo.grep;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Grep
+public interface Grep
 {
   /*
   * Реализовать интерфейс Grep;
@@ -11,28 +10,20 @@ public abstract class Grep
   * 2) Создать StringGrep
   *
   * */
-  String regExpOrSubstring;
+
   //значение которое нужно искать в строку я передаю в качетсве параметра класса в конструкторе;
-  List<String> list = new ArrayList();
+
   //проверка входит ли подстрока в сторку, либо regexp что то нашел;
-  public void checkValue(String value){}
+  public void checkValue(String value);
 
   //вовращает список всех строк, которые подошли
-
-  public List<String> getValuesList() {
-    return list;
-  }
+  public List<String> getValuesList();
   
   //распечатать в консоль все значения
-  public void printAllValues()
-  {
-    for(Object string : list)
-      System.out.println(string);
-  }
+  public void printAllValues();
 
 
   //вернуть размер списка
-  public Integer getValuesSize() {
-    return list.size();
-  }
+  public Integer getValuesSize();
+
 }

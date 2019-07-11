@@ -1,6 +1,6 @@
 package tibbo.grep;
 
-public class StringGrep extends Grep
+public class StringGrep extends AbstractGrep
 {
     StringGrep(String regExpOrSubstring)
     {
@@ -10,9 +10,7 @@ public class StringGrep extends Grep
     @Override
     public void checkValue(String value)
     {
-        String _value = value.toLowerCase();
-        if(_value.indexOf(regExpOrSubstring)>=0)
+        if(value.toLowerCase().indexOf(regExpOrSubstring)>=0)
             list.add(value);
-
     }
 }

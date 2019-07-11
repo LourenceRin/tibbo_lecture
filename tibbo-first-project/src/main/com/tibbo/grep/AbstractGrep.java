@@ -5,8 +5,8 @@ import java.util.List;
 
 public abstract class AbstractGrep implements Grep
 {
-    public String regExpOrSubstring;
-    public List<String> list = new ArrayList();
+    protected String regExpOrSubstring;
+    protected List<String> list = new ArrayList();
 
     public void checkValue(String value){}
 

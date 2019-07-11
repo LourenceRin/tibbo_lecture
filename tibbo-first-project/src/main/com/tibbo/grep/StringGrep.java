@@ -8,16 +8,17 @@ public class StringGrep implements Grep
     String regExpOrSubstring;
     StringGrep(String regExpOrSubstring)
     {
-        this.regExpOrSubstring = regExpOrSubstring;
+        this.regExpOrSubstring = regExpOrSubstring.toLowerCase();
     }
 
-    List<String> list = new ArrayList<>();
+    List<String> list = new ArrayList();
 
     @Override
     public void checkValue(String value)
     {
-        if(regExpOrSubstring.indexOf(value)>=0)
-            list.add(regExpOrSubstring);
+        String _value = value.toLowerCase();
+        if(_value.indexOf(regExpOrSubstring)>=0)
+            list.add(value);
     }
 
     @Override
@@ -29,9 +30,7 @@ public class StringGrep implements Grep
     public void printAllValues()
     {
         for(Object string : list)
-        {
             System.out.println(string);
-        }
     }
 
     @Override

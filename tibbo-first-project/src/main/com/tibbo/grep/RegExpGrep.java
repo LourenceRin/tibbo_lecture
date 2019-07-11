@@ -10,20 +10,21 @@ public class RegExpGrep implements Grep
     String regExpOrSubstring;
     RegExpGrep(String regExpOrSubstring)
     {
-        this.regExpOrSubstring = regExpOrSubstring;
+        this.regExpOrSubstring = regExpOrSubstring.toLowerCase();
     }
 
-    List<String> list = new ArrayList<>();
-
+    List<String> list = new ArrayList();
 
     @Override
     public void checkValue(String value)
     {
-        Pattern pattern = Pattern.compile(value , Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(regExpOrSubstring);
-        matcher.find();
-        if(Pattern.CASE_INSENSITIVE>0)
-            list.add(regExpOrSubstring);
+        Pattern pattern = Pattern.compile(regExpOrSubstring, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(value);
+        while(matcher.find())
+            if(value.substring(matcher.start(), matcher.end())!=null) {
+                list.add(value);
+                break;
+            }
     }
 
     @Override

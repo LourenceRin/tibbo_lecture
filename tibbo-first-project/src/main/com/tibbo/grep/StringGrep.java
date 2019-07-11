@@ -1,33 +1,42 @@
 package tibbo.grep;
 
+import java.util.ArrayList;
+
 import java.util.List;
 
 public class StringGrep implements Grep
 {
+    String regExpOrSubstring;
+    StringGrep(String regExpOrSubstring)
+    {
+        this.regExpOrSubstring = regExpOrSubstring.toLowerCase();
+    }
+
+    List<String> list = new ArrayList();
 
     @Override
-    public void contains(String regExpOrSubstring, String value)
+    public void checkValue(String value)
     {
-        if(regExpOrSubstring.indexOf(value)>=0)
-            myArray.add(regExpOrSubstring);
+        String _value = value.toLowerCase();
+        if(_value.indexOf(regExpOrSubstring)>=0)
+            list.add(value);
+
     }
 
     @Override
     public List<String> getValuesList() {
-        return myArray;
+        return list;
     }
 
     @Override
     public void printAllValues()
     {
-        for(Object string : myArray)
-        {
+        for(Object string : list)
             System.out.println(string);
-        }
     }
 
     @Override
     public Integer getValuesSize() {
-        return myArray.size();
+        return list.size();
     }
 }

@@ -1,30 +1,45 @@
 package tibbo.grep;
 
+import java.util.ArrayList;
+
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
 public class RegExpGrep implements Grep
 {
-    @Override
-    public void contains(String regExpOrSubstring, String value)
+    String regExpOrSubstring;
+    RegExpGrep(String regExpOrSubstring)
     {
-        Pattern pattern = Pattern.compile(value , Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(regExpOrSubstring);
-        matcher.find();
-        if(Pattern.CASE_INSENSITIVE>0)
-            myArray.add(regExpOrSubstring);
+        this.regExpOrSubstring = regExpOrSubstring.toLowerCase();
+    }
+
+    List<String> list = new ArrayList();
+
+    @Override
+    public void checkValue(String value)
+    {
+        Pattern pattern = Pattern.compile(regExpOrSubstring, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(value);
+        while(matcher.find())
+            if(value.substring(matcher.start(), matcher.end())!=null) {
+                list.add(value);
+                break;
+            }
+
     }
 
     @Override
     public List<String> getValuesList() {
-        return myArray;
+        return list;
     }
 
     @Override
     public void printAllValues()
     {
-        for(Object string : myArray)
+
+        for(Object string : list)
+
         {
             System.out.println(string);
         }
@@ -32,6 +47,8 @@ public class RegExpGrep implements Grep
 
     @Override
     public Integer getValuesSize() {
-        return myArray.size();
+
+        return list.size();
+
     }
 }

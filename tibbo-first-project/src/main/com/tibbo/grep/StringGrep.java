@@ -1,6 +1,7 @@
 package tibbo.grep;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class StringGrep implements Grep
@@ -19,6 +20,7 @@ public class StringGrep implements Grep
         String _value = value.toLowerCase();
         if(_value.indexOf(regExpOrSubstring)>=0)
             list.add(value);
+
     }
 
     @Override

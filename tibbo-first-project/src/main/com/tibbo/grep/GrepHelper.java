@@ -13,6 +13,7 @@ public class GrepHelper
       return new StringGrep(regExpOrSubstring);
     if(value == 1)
       return new RegExpGrep(regExpOrSubstring);
+
     return null;
   }
   

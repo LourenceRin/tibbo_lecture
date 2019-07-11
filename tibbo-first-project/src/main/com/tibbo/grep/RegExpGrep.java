@@ -1,6 +1,7 @@
 package tibbo.grep;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
@@ -25,6 +26,7 @@ public class RegExpGrep implements Grep
                 list.add(value);
                 break;
             }
+
     }
 
     @Override
@@ -35,7 +37,9 @@ public class RegExpGrep implements Grep
     @Override
     public void printAllValues()
     {
+
         for(Object string : list)
+
         {
             System.out.println(string);
         }
@@ -43,6 +47,8 @@ public class RegExpGrep implements Grep
 
     @Override
     public Integer getValuesSize() {
+
         return list.size();
+
     }
 }

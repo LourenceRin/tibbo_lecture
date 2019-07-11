@@ -17,7 +17,7 @@ public class TestGrep extends TestCase
     int STRING_GREP = 0;
     testAbstractGrep(STRING_GREP);
   }
-  
+
   public void testRegExpGrep()
   {
     int REGEXP_GREP = 1;

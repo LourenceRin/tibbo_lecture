@@ -1,5 +1,6 @@
 package tibbo.grep;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface Grep
@@ -7,12 +8,12 @@ public interface Grep
   /*
   * Реализовать интерфейс Grep;
   * 1) Создать класс StringGrep
-  * 2) Создать RegExpGrep
+  * 2) Создать StringGrep
   *
   * */
   
   //значение которое нужно искать в строку я передаю в качетсве параметра класса в конструкторе;
-  
+
   //проверка входит ли подстрока в сторку, либо regexp что то нашел;
   public void checkValue(String value);
   
@@ -21,7 +22,8 @@ public interface Grep
   
   //распечатать в консоль все значения
   public void printAllValues();
-  
+
+
   //вернуть размер списка
   public Integer getValuesSize();
   

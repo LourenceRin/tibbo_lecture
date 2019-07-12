@@ -12,12 +12,22 @@ public class GrepHelper
       //1 == RegExpGrep(regExpOrSubstring);
       //в случае если value != 0 и не равно 1 нужно выбросить исклюечение IllegalArgumentException
       //в случе если regExpOrSubstring == null нужно выбросить исключение GrepException, но выбросить его нужно не отсюда, а из конструктора класса
+    if(value == 0)
+      return new StringGrep(regExpOrSubstring);
+    if(value == 1)
+      return new RegExpGrep(regExpOrSubstring);
     return null;
   }
   
   public static List<String> prepareValues(String value, String splitSymbol)
   {
-    return null;
+      List<String> list = new ArrayList();
+      String[] myList = value.split(splitSymbol);
+      for(String i:myList)
+      {
+          list.add(i);
+      }
+      return list;
   }
   
   public static List<String> readValuesFromFile(String filePath)

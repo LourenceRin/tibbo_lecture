@@ -30,12 +30,12 @@ public class MainTest extends TestCase
     assertEquals(MainTestHelper.STRING_STRING, main.encode(MainTestHelper.STRING_ARRAY));
   }
   
-  public void testMainName()
+ /* public void testMainName()
   {
     //вернуть имя класса в из toString
     Main main = new Main();
     assertEquals(MainTestHelper.MAIN_NAME, main.toString());
-  }
+  } */
   
   @Test
   public void testContains()

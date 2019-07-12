@@ -1,6 +1,6 @@
 package tibbo.grep;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public interface Grep
 {
@@ -17,7 +17,7 @@ public interface Grep
   public void checkValue(String value);
 
   //вовращает список всех строк, которые подошли
-  public List<String> getValuesList();
+  public ArrayList getValuesList();
 
   //распечатать в консоль все значения
   public void printAllValues();

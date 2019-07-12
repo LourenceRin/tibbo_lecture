@@ -6,7 +6,7 @@ abstract class abstrGrep implements Grep{
 
     String str;
 
-    abstrGrep(String reg){
+    abstrGrep(String reg) throws GrepException{
         str = reg.toLowerCase();
     }
 

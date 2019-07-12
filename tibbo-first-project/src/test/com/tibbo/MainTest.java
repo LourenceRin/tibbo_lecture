@@ -27,7 +27,6 @@ public class MainTest extends TestCase
   {
     //из набора байт получить строку
     Main main = new Main();
-    String str = main.encode(MainTestHelper.STRING_ARRAY);
     assertEquals(MainTestHelper.STRING_STRING, main.encode(MainTestHelper.STRING_ARRAY));
   }
   

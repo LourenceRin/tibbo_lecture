@@ -7,7 +7,7 @@ public class Main
     System.out.println("Hello world!");
   }
 
-  public static final String CONST = "This is the name of Main class";
+  public static final String string = "This is the name of Main class";
   public Integer plus(int[] array)
   {
     int sum = 0;
@@ -17,23 +17,22 @@ public class Main
     return sum;
   }
 
-  public String encode(byte[] byteArray)
-  {
+  public String encode(byte[] byteArray){
     return new String(byteArray);
   }
 
-  public Boolean stringContains(String value, String subString)
-  {
+
+  public Boolean stringContains(String value, String subString){
     return value.contains(subString);
   }
+
   @Override
   public String toString()
   {
-    return CONST;
+    return string.getClass().getName();
   }
 
-  public static Main getInstance()
-  {
+  public static Main getInstance(){
     return new Main();
   }
 }

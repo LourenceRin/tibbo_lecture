@@ -2,9 +2,9 @@ package tibbo.grep;
 
 import java.util.regex.Pattern;
 
-class StringGrep extends AbstractGrep{
+public class StringGrep extends AbstractGrep{
 
-    private Pattern pattern;
+     Pattern pattern;
 
     StringGrep(String reg) throws GrepException {
         super(reg);

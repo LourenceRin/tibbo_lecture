@@ -1,8 +1,12 @@
 language: java
 
 jdk:
+<<<<<<< HEAD
 - oraclejdk8
 - openjdk8
+=======
+  - openjdk8
+>>>>>>> d587bb78eb84fad1998042cdf63ed9d0b4ddc249
 
 env:
 - $PROJECT_DIR=tibbo-first-project

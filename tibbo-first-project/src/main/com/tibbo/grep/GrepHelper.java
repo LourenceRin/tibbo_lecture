@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class GrepHelper
+public class GrepHelper
 {
-    static final String GREP_EXPCETION_MESSAGE = "Значение null не подходит для поиска";
+    public static final String GREP_EXPCETION_MESSAGE = "Значение null не подходит для поиска";
 
-    static Grep getInstance(Integer value, String regExpOrSubstring) throws Exception
+    public static Grep getInstance(Integer value, String regExpOrSubstring) throws Exception
     {
         //0 == StringGrep(regExpOrSubstring);
         //1 == RegExpGrep(regExpOrSubstring);
@@ -24,7 +24,7 @@ class GrepHelper
             throw new IllegalArgumentException("value != 0 , value != 1");
     }
 
-    static List<String> prepareValues(String value, String splitSymbol)
+    public static List<String> prepareValues(String value, String splitSymbol)
     {
         ArrayList list = new ArrayList();
         String[] myList = value.split(splitSymbol);
@@ -33,7 +33,7 @@ class GrepHelper
         return list;
     }
 
-    static List readValuesFromFile(String filePath)
+     static List readValuesFromFile(String filePath)
     {
         List list = new ArrayList();
         try{

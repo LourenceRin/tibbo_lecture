@@ -1,13 +1,13 @@
 package tibbo.grep;
 
-import java.util.ArrayList;
+import java.util.regex.Pattern;
 
-import java.util.List;
+class StringGrep extends AbstractGrep{
 
-public class StringGrep extends abstrGrep{
+    private Pattern pattern;
 
-
-    StringGrep(String reg) {
+    StringGrep(String reg) throws GrepException {
         super(reg);
+        pattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);
     }
 }

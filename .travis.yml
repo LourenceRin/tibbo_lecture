@@ -1,14 +1,9 @@
 language: java
 
 jdk:
-<<<<<<<<< Temporary merge branch 1
-- oraclejdk8
-- openjdk8
-=========
   - openjdk8
->>>>>>>>> Temporary merge branch 2
 
 env:
-- $PROJECT_DIR=tibbo-first-project
+  - $PROJECT_DIR=tibbo-first-project
 
 script: cd $PROJECT_DIR && ./gradlew assemble && ./gradlew check

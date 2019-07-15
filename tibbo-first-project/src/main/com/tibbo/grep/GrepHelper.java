@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class GrepHelper
 {
   public static final String GREP_EXPCETION_MESSAGE = "Значение null не подходит для поиска";
+  public static final String FIRST_SPLIT_SYMBOL = "\n";
+  public static final String SECOND_SPLIT_SYMBOL = " ";
   
   public static Grep getInstance(Integer value, String regExpOrSubstring) throws Exception
   {

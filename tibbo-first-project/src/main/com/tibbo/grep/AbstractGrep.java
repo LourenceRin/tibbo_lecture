@@ -14,20 +14,10 @@ abstract class AbstractGrep implements Grep{
 
     String regExpOrSubstring;
 
-  /*  AbstractGrep(String regExpOrSubstring){
-        regExpOrSubstring = regExpOrSubstring.toLowerCase();
-    } */
-
     ArrayList list = new ArrayList();
 
-
-
-
     @Override                                           //входит ли подстрока в строку
-    public void checkValue(String value){
-        if(value.toLowerCase().contains(regExpOrSubstring))
-            list.add(value);
-    }
+    public void checkValue(String value){ }
 
     @Override                                         //список всех походящих строк
     public ArrayList getValuesList(){

@@ -5,9 +5,10 @@ import java.util.regex.Matcher;
 
 public class RegExpGrep extends AbstractGrep{
 
+    Pattern pattern = Pattern.compile(regExpOrSubstring, Pattern.CASE_INSENSITIVE);
+
     public void checkValue(String value)
     {
-        Pattern pattern = Pattern.compile(regExpOrSubstring, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(value);
         while(matcher.find()) {
             list.add(value);

@@ -29,7 +29,7 @@ public class Main
   @Override
   public String toString()
   {
-    return CONST.getClass().getTypeName();
+    return CONST;
   }
 
   public static Main getInstance()

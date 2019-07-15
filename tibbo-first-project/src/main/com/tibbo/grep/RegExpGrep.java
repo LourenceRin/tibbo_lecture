@@ -3,11 +3,11 @@ package tibbo.grep;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
-public class RegExpGrep extends abstrGrep{
+public class RegExpGrep extends AbstractGrep{
 
-    public void checkValue(String value)      ////входит ли подстрока в строку
+    public void checkValue(String value)
     {
-        Pattern pattern = Pattern.compile(str, Pattern.CASE_INSENSITIVE);
+        Pattern pattern = Pattern.compile(regExpOrSubstring, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(value);
         while(matcher.find()) {
             list.add(value);
@@ -15,8 +15,7 @@ public class RegExpGrep extends abstrGrep{
         }
 
     }
-
-    RegExpGrep(String reg) {
+    RegExpGrep(String reg) throws GrepException {
         super(reg);
     }
 }

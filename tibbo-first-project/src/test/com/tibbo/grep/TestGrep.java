@@ -21,9 +21,14 @@ public class TestGrep extends TestCase
   {
     testAbstractGrep(STRING_GREP);
   }
+<<<<<<<<< Temporary merge branch 1
+
+  public void testRegExpGrep()
+=========
   
   @Test
   public void testRegExpGrep() throws Exception
+>>>>>>>>> Temporary merge branch 2
   {
     testAbstractGrep(REGEXP_GREP);
   }

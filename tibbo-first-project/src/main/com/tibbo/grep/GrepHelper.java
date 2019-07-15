@@ -1,46 +1,56 @@
 package tibbo.grep;
 
+<<<<<<<<< Temporary merge branch 1
 import java.util.ArrayList;
-import java.util.Collections;
+=========
+>>>>>>>>> Temporary merge branch 2
 import java.util.List;
 
 public class GrepHelper
 {
-    public static final String GREP_EXPCETION_MESSAGE = "Значение null не подходит для поиска";
-
-    public static Grep getInstance(Integer value, String regExpOrSubstring) throws GrepException
+<<<<<<<<< Temporary merge branch 1
+    public static Grep getInstance(Integer value, String regExpOrSubstring)
     {
-
         //0 == StringGrep(regExpOrSubstring);
         //1 == RegExpGrep(regExpOrSubstring);
-        //в случае если value != 0 и не равно 1 нужно выбросить исклюечение IllegalArgumentException
-        //в случе если regExpOrSubstring == null нужно выбросить исключение GrepException, но выбросить его нужно не отсюда, а из конструктора класса
-
-        if(value == 0){
+        if(value == 0)
             return new StringGrep(regExpOrSubstring);
-        }else if(value == 1) {
+        if(value == 1)
             return new RegExpGrep(regExpOrSubstring);
-        }else if (value != 0 || value != 1)  {
-            throw  new IllegalArgumentException("value != 0 || value != 1");
-        }else {
-            return null;
-        }
+
+        return null;
     }
 
-
-    public static List prepareValues(String value, String splitSymbol)
+    public static List<String> prepareValues(String value, String splitSymbol)
     {
         List list = new ArrayList();
         String[] stringList = value.split(splitSymbol);
 
-        Collections.addAll(list, stringList);
+        for(String i: stringList){
+            list.add(i);
+        }
         return list;
     }
-
-    public static List<String> readValuesFromFile(String filePath)
-    {
-
-        return null;
-    }
+=========
+  public static final String GREP_EXPCETION_MESSAGE = "Значение null не подходит для поиска";
+  
+  public static Grep getInstance(Integer value, String regExpOrSubstring) throws GrepException
+  {
+      //0 == StringGrep(regExpOrSubstring);
+      //1 == RegExpGrep(regExpOrSubstring);
+      //в случае если value != 0 и не равно 1 нужно выбросить исклюечение IllegalArgumentException
+      //в случе если regExpOrSubstring == null нужно выбросить исключение GrepException, но выбросить его нужно не отсюда, а из конструктора класса
+    return null;
+  }
+  
+  public static List<String> prepareValues(String value, String splitSymbol)
+  {
+    return null;
+  }
+  
+  public static List<String> readValuesFromFile(String filePath)
+  {
+    return null;
+  }
+>>>>>>>>> Temporary merge branch 2
 }
-

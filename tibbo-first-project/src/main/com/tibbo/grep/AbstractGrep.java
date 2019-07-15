@@ -2,25 +2,27 @@ package tibbo.grep;
 
 import java.util.ArrayList;
 
+import java.util.List;
+
 abstract class abstrGrep implements Grep{
 
     String str;
 
-    abstrGrep(String reg) throws GrepException{
+     abstrGrep(String reg){
         str = reg.toLowerCase();
     }
 
-    ArrayList list = new ArrayList();
+    List<String> list = new ArrayList();
 
 
     @Override                                           //входит ли подстрока в строку
     public void checkValue(String value){
-        if(value.toLowerCase().contains(str))
+        if(value.toLowerCase().indexOf(str) >= 0)
             list.add(value);
     }
 
     @Override                                         //список всех походящих строк
-    public ArrayList getValuesList(){
+    public List<String> getValuesList(){
         return list;
     }
 

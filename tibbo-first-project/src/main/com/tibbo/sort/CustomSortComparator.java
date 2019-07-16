@@ -1,6 +1,7 @@
 package tibbo.sort;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomSortComparator implements Sort {
@@ -24,17 +25,17 @@ public class CustomSortComparator implements Sort {
     }else if (o1 == null || o2 == null){
 
     } */
-    if(!(o1 instanceof String) && !(o2 instanceof String)){
+    if (!(o1 instanceof String) && !(o2 instanceof String)) {
       return 0;
-    }else if((o1 instanceof String) && (o2 instanceof String)){
-      if (o1 != null && o2 == null){
+    } else if ((o1 instanceof String) && (o2 instanceof String)) {
+      if (o1 != null && o2 == null) {
         return -1;
-      }else if (o1 == null && o2 != null){
+      } else if (o1 == null && o2 != null) {
         return 1;
-      }else if(o1 == null && o2 == null) {
+      } else if (o1 == null && o2 == null) {
         return 0;
       }
-    }else if (character != null) {
+    } else if (character != null) {
       res = num((String) o1) - num((String) o2);
     } else {
       res = o1.toString().compareTo(o1.toString());
@@ -70,43 +71,49 @@ public class CustomSortComparator implements Sort {
     return list;
   }
 
-  @Override
-  public void sort() {
+
+  public void quickSort(int low, int high) {
     //Сам метод сортироки. Сортировем по количеству символов в строке.
-    for(int left = 0; left < list.size(); left++){
-      String value = (String) list.get(left);
-      int i = left -1;
-      for(; i>=0; i--){
-        if(compare(value, list.get(i)) == -1){
-          list.set(i+1, list.get(i));
-        }else{
-          break;
+    if (low >= high)
+      return;
+    int i = low, j = high;
+    int res = i - (i - j) / 2;
+    while (i < j) {
+      while (i < res && (compare(list.get(i), list.get(res)) < 1)) {
+        i++;
+      }
+      while (j > res && (compare(list.get(res), list.get(j)) < 1)) {
+        j--;
+      }
+      if (i < j) {
+        Collections.swap(list, i, j);
+        if (i == res) {
+          res = j;
+        } else if (j == res) {
+          res = i;
         }
       }
-      list.set(i + 1, value);
+    }
+    quickSort(low, res);
+    quickSort(res + 1, high);
+  }
+
+
+  @Override
+  public void sort() {
+    quickSort(0, list.size() - 1);
+  }
+
+    private int num (String str){
+      int index = 0;
+      for (Character ignored : str.toCharArray())
+        if (index + 1 == str.length()) {
+          return 1;
+        } else {
+          return 1 + num(str.substring(index + 1, str.length() - 1));
+        }
+      return index;
     }
   }
 
- /* private int num(String str, Character character1){
-    int index = str.indexOf(character1);
-    if(index + 1 == str.length()){
-      return 1;
-    }else if(index != -1){
-      return 1 + num(str.substring(index + 1, str.length() - 1), character1);
-    }else if(index == -1){
-      return 0;
-    }
-    return 0;
-  } */
 
-  private int num(String str){
-    int index = 0;
-    for (Character ignored : str.toCharArray())
-      if (index + 1 == str.length()) {
-        return 1;
-      } else {
-        return 1 + num(str.substring(index + 1, str.length() - 1));
-      }
-    return index;
-  }
-}

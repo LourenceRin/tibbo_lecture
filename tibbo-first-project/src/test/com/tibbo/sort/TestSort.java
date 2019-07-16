@@ -21,7 +21,7 @@ public class TestSort extends TestCase
     assertEquals(47, sorter.getvaluesList().size());
     
     assertNotSame(values, sorter.getvaluesList());
-  
+
     sorter = new CustomSortComparator();
     assertNotNull(sorter);
     sorter.setValuesList(values);

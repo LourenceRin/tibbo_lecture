@@ -22,6 +22,7 @@ public class CustomSortComparator implements Sort
     return count;
   }
 
+
   @Override
   public int compare(Object o1, Object o2) {
     //Метод сравнения, возращает 1 0 или -1 d зависимости от того какое из значений больше

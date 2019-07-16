@@ -6,9 +6,9 @@ import java.util.regex.Matcher;
 public class RegExpGrep extends AbstractGrep
 {
     private Pattern pattern;
-    RegExpGrep(String regExpOrSubstring)
+    RegExpGrep(String regExpOrSubstring) throws GrepException
     {
-        this.regExpOrSubstring = regExpOrSubstring.toLowerCase();
+        super(regExpOrSubstring);
         pattern = Pattern.compile(regExpOrSubstring, Pattern.CASE_INSENSITIVE);
     }
 

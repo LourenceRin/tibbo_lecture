@@ -5,6 +5,14 @@ import java.util.List;
 
 public abstract class AbstractGrep implements Grep
 {
+    AbstractGrep(String regExpOrSubstring)throws GrepException
+    {
+        if(regExpOrSubstring==null)
+            throw new GrepException(GrepHelper.GREP_EXPCETION_MESSAGE);
+        else
+            this.regExpOrSubstring=regExpOrSubstring.toLowerCase();
+    }
+
     protected String regExpOrSubstring;
     protected List<String> list = new ArrayList();
 

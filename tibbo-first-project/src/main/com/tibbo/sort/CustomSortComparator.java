@@ -74,21 +74,41 @@ public class CustomSortComparator implements Sort
     //вернуть список уже после сортировки
     return list;
   }
-  
+
+  private void qSort(int low,int high)
+    {
+        if (list.size() == 0)
+            return;
+        if (low >= high)
+            return;
+        int middle = low + (high - low) / 2;
+        String opora = list.get(middle);
+        int i = low, j = high;
+        while (i <= j) {
+            while(compare(list.get(i),opora)<0)
+                i++;
+            while(compare(list.get(j),opora)>0)
+                j--;
+
+            if (i <= j) {
+                String temp = list.get(i);
+                list.set(i,list.get(j));
+                list.set(j,temp);
+                i++;
+                j--;
+            }
+        }
+        if (low < j)
+            qSort(low, j);
+        if (high > i)
+            qSort( i, high);
+    }
+
   @Override
   public void sort()
   {
-    //Сам метод сортироки. Сортировем по количеству символов в строке.
-    for (int i = 1; i < list.size(); i++) {
-      String current = list.get(i);
-      int j = i - 1;
-      while(j >= 0 && (compare(current,list.get(j)))<0) {
-        list.set(j+1,list.get(j));
-        j--;
-      }
-      // в этой точке мы вышли, так что j так же -1
-      // или в первом элементе, где текущий >= a[j]
-      list.set(j+1,current);
-    }
+      int low =0;
+      int high = list.size()-1;
+      qSort(low,high);
   }
 }

@@ -24,13 +24,7 @@ public class CustomSortComparator implements Sort {
     }else if (o1 == null || o2 == null){
 
     } */
-    if (o1 != null && o2 == null){
-      return -1;
-    }else if (o1 == null && o2 != null){
-      return 1;
-    }else if(o1 == null){
-      return 0;
-    } else if(!(o1 instanceof String) && !(o2 instanceof String)){
+    if(!(o1 instanceof String) && !(o2 instanceof String)){
       return 0;
     }else if((o1 instanceof String) && (o2 instanceof String)){
       if (o1 != null && o2 == null){
@@ -41,7 +35,7 @@ public class CustomSortComparator implements Sort {
         return 0;
       }
     }else if (character != null) {
-      res = num((String) o1, character) - num((String) o2, character);
+      res = num((String) o1) - num((String) o2);
     } else {
       res = o1.toString().compareTo(o1.toString());
     }
@@ -93,7 +87,7 @@ public class CustomSortComparator implements Sort {
     }
   }
 
-  private int num(String str, Character character1){
+ /* private int num(String str, Character character1){
     int index = str.indexOf(character1);
     if(index + 1 == str.length()){
       return 1;
@@ -103,5 +97,16 @@ public class CustomSortComparator implements Sort {
       return 0;
     }
     return 0;
+  } */
+
+  private int num(String str){
+    int index = 0;
+    for (Character ignored : str.toCharArray())
+      if (index + 1 == str.length()) {
+        return 1;
+      } else {
+        return 1 + num(str.substring(index + 1, str.length() - 1));
+      }
+    return index;
   }
 }

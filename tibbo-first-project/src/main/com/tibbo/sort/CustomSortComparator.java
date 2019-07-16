@@ -4,10 +4,9 @@ import java.util.*;
 
 public class CustomSortComparator implements Sort
 {
-  private List<String> list = new ArrayList<>();
+  public List<String> list;
   private int direction;
-  private boolean haveSymbol;
-  private Character _symbol;
+  private Character symbol;
 
   private Integer count(String string)
   {
@@ -15,7 +14,7 @@ public class CustomSortComparator implements Sort
     int index=0;
     while(index>=0)
     {
-      index = string.indexOf(_symbol,index+1);
+      index = string.indexOf(symbol,index+1);
       if(index>0)
         count++;
     }
@@ -28,19 +27,19 @@ public class CustomSortComparator implements Sort
     //Метод сравнения, возращает 1 0 или -1 d зависимости от того какое из значений больше
     //Что тут нужно будет сделать если мы сортируем в обратную стороную?
     if(o1 instanceof String && o2 instanceof String) {
-      if (haveSymbol)
+      if (symbol!=null)
         return count(o1.toString()).compareTo(count(o2.toString())) * direction;
       else {
-        Integer int1 = o1.toString().length();
-        Integer int2 = o2.toString().length();
-        return int1.compareTo(int2);
+        Integer firstLenght = o1.toString().length();
+        Integer secondLenght = o2.toString().length();
+        return firstLenght.compareTo(secondLenght);
       }
     }
     else
     {
-      Boolean bool1 = o1 != null;
-      Boolean bool2 = o2 != null;
-      return bool1.compareTo(bool2)*direction;
+      Boolean isFirstNotNull = o1 != null;
+      Boolean isSecondNotNull = o2 != null;
+      return isFirstNotNull.compareTo(isSecondNotNull)*direction;
     }
   }
   
@@ -49,9 +48,7 @@ public class CustomSortComparator implements Sort
   {
     //Если symbol == null то в таком случае у нас нет символа по которому мы будет сравнить строки.
     //Сравнить в таком случае нужно по общему количеству симоволов в строке
-    haveSymbol = symbol != null;
-    if(haveSymbol)
-      _symbol=symbol;
+    this.symbol=symbol;
   }
   
   @Override
@@ -69,15 +66,13 @@ public class CustomSortComparator implements Sort
   {
     //В этом случае нужно запомнить values.
     //Чтобы при сортировке не измениеть исходный список нужно как то его скопировать и запомнить уже копию;
-    for(String i : values)
-      list.add(i);
+    list = new ArrayList<>(values);
   }
   
   @Override
   public List<String> getvaluesList()
   {
     //вернуть список уже после сортировки
-    sort();
     return list;
   }
   

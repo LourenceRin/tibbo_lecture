@@ -4,7 +4,7 @@ import java.util.*;
 
 public class CustomSortComparator implements Sort
 {
-  public List<String> list;
+  private List<String> list;
   private int direction;
   private Character symbol;
 

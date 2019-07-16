@@ -2,9 +2,9 @@ package tibbo.grep;
 
 public class StringGrep extends AbstractGrep
 {
-    StringGrep(String regExpOrSubstring) throws GrepException
+    StringGrep(String regExpOrSubstring)
     {
-        super(regExpOrSubstring);
+        this.regExpOrSubstring = regExpOrSubstring.toLowerCase();
     }
 
     @Override

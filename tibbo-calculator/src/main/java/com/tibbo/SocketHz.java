@@ -17,11 +17,18 @@ public class SocketHz extends Thread {
     {
         try
         {
-            String string;
-            DataInputStream stream = new DataInputStream(socket.getInputStream());
-            string = stream.readUTF();
-            INSTANCE.increase();
-            System.out.println(string);
+            while(!socket.isClosed()){
+                String string=null;
+                DataInputStream stream = new DataInputStream(socket.getInputStream());
+                try {
+                    string = stream.readUTF();
+                }catch (EOFException e)
+                {
+                    break;
+                }
+                INSTANCE.increase();
+                System.out.println(string);
+            }
         }
         catch(IOException e)
         {

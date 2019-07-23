@@ -40,7 +40,8 @@ public class TestServerConnection extends TestCase
     
     Thread.sleep(10000);
     assertEquals(3, server.getMessageCounter());
-    
+
+
     socket.close();
     socket1.close();
     socket2.close();

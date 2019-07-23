@@ -1,16 +1,20 @@
 package com.tibbo;
 
+import sun.nio.ch.ThreadPool;
+
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class Server
 {
   private static final Server INSTANCE = new Server();
   private ServerSocket serverSocket;
   private static int messageCounter = 0;
-  
+  Thread thread;
+
   public static void main(String[] args) throws Exception
   {
     INSTANCE.launch(args);
@@ -25,22 +29,21 @@ public class Server
   {
     serverSocket = new ServerSocket();
     serverSocket.bind(new InetSocketAddress(5555));
-    Thread thread = new Thread(){
+    thread = new Thread(){
       public void run()
       {
         //у тебя этот поток, который обрабатывает  клиентские подключение не зациклен, он один ращз отработает и все
-        int i =3;
         try
         {
-          while(i>0) {
-            Socket socket = serverSocket.accept();
+          while(!isInterrupted()) {
+            Socket socket;
+            try { socket = serverSocket.accept(); }
+            catch (SocketException e) { break; }
             SocketHz test = new SocketHz(socket, INSTANCE);
             test.start();
-            i--;
           }
         }
-        catch (IOException e)
-        {
+        catch (IOException e) {
           e.printStackTrace();
         }
       }
@@ -50,6 +53,7 @@ public class Server
   
   public void close() throws IOException
   {
+    thread.interrupt();
     serverSocket.close();
   }
   

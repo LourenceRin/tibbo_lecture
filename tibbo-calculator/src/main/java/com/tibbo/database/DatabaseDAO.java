@@ -4,9 +4,11 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.sql.Connection;
+
 public class DatabaseDAO
 {
-  
+
   private static Session session = null;
   
   static
@@ -26,6 +28,7 @@ public class DatabaseDAO
   public static void registerUser(String username, String password)
   {
     //Выполнить Insert в базу данных
+
   }
   
   public static boolean checkUserExist(String username, String password)

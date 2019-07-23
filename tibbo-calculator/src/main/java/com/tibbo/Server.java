@@ -7,20 +7,23 @@ import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Server
 {
   private static final Server INSTANCE = new Server();
   private ServerSocket serverSocket;
   private static int messageCounter = 0;
-  Thread thread;
+  private List<Thread> pool = new ArrayList<>();
+  private Thread thread;
 
   public static void main(String[] args) throws Exception
   {
     INSTANCE.launch(args);
   }
 
-  public static void increase()
+  static void increase()
   {
     messageCounter++;
   }
@@ -41,6 +44,7 @@ public class Server
             catch (SocketException e) { break; }
             SocketHz test = new SocketHz(socket, INSTANCE);
             test.start();
+            pool.add(test);
           }
         }
         catch (IOException e) {
@@ -55,6 +59,8 @@ public class Server
   {
     thread.interrupt();
     serverSocket.close();
+    for(Thread i : pool)
+        i.interrupt();
   }
   
   public int getMessageCounter()

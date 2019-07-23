@@ -17,9 +17,9 @@ public class SocketHz extends Thread {
     {
         try
         {
-            while(!socket.isClosed()){
+            DataInputStream stream = new DataInputStream(socket.getInputStream());
+            while(!socket.isClosed()&&!isInterrupted()){
                 String string=null;
-                DataInputStream stream = new DataInputStream(socket.getInputStream());
                 try {
                     string = stream.readUTF();
                 }catch (EOFException e)

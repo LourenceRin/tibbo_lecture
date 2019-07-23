@@ -22,11 +22,11 @@ public class SocketHz extends Thread {
                 String string=null;
                 try {
                     string = stream.readUTF();
-                }catch (EOFException e)
-                {
+                }catch (EOFException e) {
                     break;
                 }
-                INSTANCE.increase();
+                if(string!=null)
+                    INSTANCE.increase();
                 System.out.println(string);
             }
         }

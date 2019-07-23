@@ -25,7 +25,7 @@ public class ServerMessagesHelper
   public static String getValue(byte[] values)
   {
     boolean flag = false;
-    String string = new String();
+    String string = null;
     for(int i =0;i<values.length;i++)
     {
       int bpos = i << 1;

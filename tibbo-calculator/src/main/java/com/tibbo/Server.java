@@ -16,7 +16,6 @@ public class Server
     INSTANCE.launch(args);
   }
 
-
   public static void increase()
   {
     messageCounter++;
@@ -52,7 +51,6 @@ public class Server
   public void close() throws IOException
   {
     serverSocket.close();
-
   }
   
   public int getMessageCounter()

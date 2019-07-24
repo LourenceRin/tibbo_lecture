@@ -47,7 +47,7 @@ public class TestServerConnection extends TestCase
     socket2.close();
   }
   
-  @Test
+ /* @Test
   public void testCalculator() throws Exception
   {
     Socket socket = new Socket();
@@ -84,7 +84,7 @@ public class TestServerConnection extends TestCase
     assertEquals(3, server.getMessageCounter());
     
     socket.close();
-  }
+  } */
   
   //тест 1
   //создать еще один тест, в котором будем вычислять

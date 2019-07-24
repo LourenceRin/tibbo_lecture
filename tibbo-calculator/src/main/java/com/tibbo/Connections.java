@@ -1,4 +1,4 @@
-package com.tibbo.database;
+package com.tibbo;
 
 import com.tibbo.Server;
 import java.io.*;

@@ -9,15 +9,14 @@ import java.io.DataOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-import static com.tibbo.Server.array_ports;
 
 public class TestServerConnection extends TestCase
 {
   private Server server;
   private static int port = 0;
-  public static int[] array_ports = {5555};
+  private static int[] array_ports = {5555,5556,5557,5558,5559};
 
-  public int getPort(){
+  private int getPort(){
     return array_ports[port];
   }
 

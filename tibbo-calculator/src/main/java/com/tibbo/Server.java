@@ -16,13 +16,22 @@ public class Server
     private Thread thread;
     private List<Thread> list = new ArrayList<>();
 
-    public static int[] array_ports = {5555, 5556, 5557, 5558, 5559};
+    public static int[] array_ports = {5555,5556,5557,5558,5559};
+    public static int num = 0;
 
 
     public static void main(String[] args) throws Exception
     {
         INSTANCE.launch(args);
     }
+
+    public void increasNum(){
+    num++;
+}
+    public int getPorts(){
+        return array_ports[num];
+    }
+
 
     public static void increase()
     {
@@ -32,7 +41,7 @@ public class Server
     public void launch(String[] args) throws Exception {
 
         serverSocket = new ServerSocket();
-        serverSocket.bind(new InetSocketAddress(5555));
+        serverSocket.bind(new InetSocketAddress(getPorts()));
         thread = new Thread() {
             public void run() {
                 try {

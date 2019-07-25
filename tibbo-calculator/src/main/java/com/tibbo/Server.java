@@ -7,6 +7,7 @@ import java.net.SocketException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Server
 {
     private static final Server INSTANCE = new Server();
@@ -14,6 +15,10 @@ public class Server
     private static int messageCounter = 0;
     private Thread thread;
     private List<Thread> list = new ArrayList<>();
+
+    public static int[] array_ports = {5555, 5556, 5557, 5558, 5559};
+
+
     public static void main(String[] args) throws Exception
     {
         INSTANCE.launch(args);
@@ -24,33 +29,36 @@ public class Server
         messageCounter++;
     }
 
-    public void launch(String[] args) throws Exception
-    {
+    public void launch(String[] args) throws Exception {
+
         serverSocket = new ServerSocket();
         serverSocket.bind(new InetSocketAddress(5555));
-        thread = new Thread(){
-            public void run()
-            {
-                try
-                {
-                    while(!isInterrupted()) {
-                        Socket socket;
-                        try{
+        thread = new Thread() {
+            public void run() {
+                try {
+                    Socket socket;
+                    while (!isInterrupted()) {
+
+                        try {
                             socket = serverSocket.accept();
-                        }catch (SocketException e){
+                        } catch (SocketException e) {
                             break;
                         }
-                        Connections test = new Connections(socket, INSTANCE);
+                        Connections test = new Connections(socket);
                         test.start();
                         list.add(test);
                     }
-                }
-                catch (IOException e) {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
         thread.start();
+    }
+
+
+    public static void reset(){
+        messageCounter = 0;
     }
     public void close() throws IOException
     {

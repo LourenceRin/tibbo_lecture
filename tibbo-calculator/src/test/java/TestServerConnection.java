@@ -1,4 +1,3 @@
-
 import com.tibbo.Server;
 import com.tibbo.ServerMessagesHelper;
 import junit.framework.TestCase;
@@ -18,8 +17,8 @@ public class TestServerConnection extends TestCase
   private static int[] array_ports = {5555,5556,5557,5558,5559};
 
   private int getPorts(){
-      return array_ports[port];
-    }
+    return array_ports[port];
+  }
 
   private void increasePort(){
     port++;
@@ -33,30 +32,30 @@ public class TestServerConnection extends TestCase
     Socket socket = new Socket();
     socket.connect(new InetSocketAddress("localhost", getPort());
     DataOutputStream stream = new DataOutputStream(socket.getOutputStream());
-    
+
     stream.writeUTF(ServerMessagesHelper.FIRST_MESSAGE);
     stream.flush();
-    
+
     Socket socket1 = new Socket();
     socket1.connect(new InetSocketAddress("localhost", 5555));
     stream = new DataOutputStream(socket1.getOutputStream());
     stream.writeUTF(ServerMessagesHelper.SECOND_MESSAGE);
     stream.flush();
-    
+
     Socket socket2 = new Socket();
     socket2.connect(new InetSocketAddress("localhost", 5555));
-    
+
     stream = new DataOutputStream(socket2.getOutputStream());
     stream.writeUTF(ServerMessagesHelper.THIRD_MESSAGE);
     stream.flush();
-    
+
     assertTrue(socket.isConnected());
     assertTrue(socket1.isConnected());
     assertTrue(socket2.isConnected());
-    
+
     Thread.sleep(10000);
     assertEquals(3, server.getMessageCounter());
-    
+
     socket.close();
     socket1.close();
     socket2.close();
@@ -65,39 +64,40 @@ public class TestServerConnection extends TestCase
   @Test
   public void testCalculator() throws Exception
   {
+    //
     Socket socket = new Socket();
     socket.connect(new InetSocketAddress(host,getPorts()));
     DataOutputStream outStream= new DataOutputStream(socket.getOutputStream());
     DataInputStream inputStream = new DataInputStream(socket.getInputStream());
-    
+
     assertTrue(socket.isConnected());
-    
+
     outStream.writeUTF(ServerMessagesHelper.FIRST_MESSAGE);
     outStream.flush();
-    
+
     String result = inputStream.readUTF();
     assertEquals(ServerMessagesHelper.MESSAGE_ERROR, result);
-    
+
     outStream.writeUTF("2 * (2 + 2)");
     outStream.flush();
-    
+
     result = inputStream.readUTF();
     assertEquals("8.0", result);
-    
+
     outStream.writeUTF("(3 + 4) * 5");
     outStream.flush();
-    
+
     result = inputStream.readUTF();
     assertEquals("35.0", result);
-    
+
     outStream.writeUTF("pow(pow(pow(2, 2), 2), 2)");
     outStream.flush();
     result = inputStream.readUTF();
-    
+
     assertEquals("256.0", result);
-    
+
     assertEquals(4, server.getMessageCounter());
-    
+    increasePort();
     socket.close();
   }
 
@@ -131,7 +131,7 @@ public class TestServerConnection extends TestCase
     assertEquals("8.0", result);
 
     assertEquals(3, server.getMessageCounter());
-
+    increasePort();
     socket.close();
   }
   //тест 1
@@ -140,10 +140,9 @@ public class TestServerConnection extends TestCase
   //корень квадртный из 144 умножить на 200
   // корень квадрный из 4096 разделить на 8
   //
-  
+
   @Test
   public void testCalculator2() throws Exception{
-
     Server.reset();
     Socket socket = new Socket();
     socket.connect(new InetSocketAddress(host,getPorts()));
@@ -162,6 +161,7 @@ public class TestServerConnection extends TestCase
     string = inputStream.readUTF();
     assertEquals("1933.0",string);
 
+    increasePort();
     socket.close();
   }
   //тест 2
@@ -201,6 +201,8 @@ public class TestServerConnection extends TestCase
     assertEquals("93.0", result);
 
     assertEquals(3, server.getMessageCounter());
+
+    increasePort();
     socket2.close();
   }
 
@@ -209,15 +211,15 @@ public class TestServerConnection extends TestCase
   //нужно создать несколько сокетов для клиента
   //вычислить в кажом по два выржания
   //
-  
-  
+
+
   @Override
   protected void setUp() throws Exception
   {
     server = new Server();
     server.launch(getPorts());
   }
-  
+
   @Override
   protected void tearDown() throws Exception
   {

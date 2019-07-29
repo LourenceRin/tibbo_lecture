@@ -8,6 +8,7 @@ import net.sourceforge.jeval.Evaluator;
 
 public class Connections extends Thread {
     private Socket socket;
+    private Evaluator evaluator = new Evaluator();
 
     Connections(Socket socket)
     {
@@ -16,7 +17,6 @@ public class Connections extends Thread {
 
 
     private String getResult(String string1){
-        Evaluator evaluator = new Evaluator();
         try {
             return evaluator.evaluate(string1);
         }catch (EvaluationException e){

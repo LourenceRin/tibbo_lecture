@@ -8,16 +8,14 @@ import java.io.DataOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-
 public class TestServerConnection extends TestCase
 {
   private Server server;
-  private static int port = 0;
+  private static int port = 5555;
   private static String host = "localhost";
-  private static int[] array_ports = {5555,5556,5557,5558,5559};
 
   private int getPorts(){
-    return array_ports[port];
+    return port;
   }
 
   private void increasePort(){
@@ -102,7 +100,7 @@ public class TestServerConnection extends TestCase
   }
 
   @Test
-  public void testCalculator1() throws Exception{
+  public void testSquareRoot() throws Exception{
     Socket socket = new Socket();
     Server.reset();
     String result;
@@ -142,7 +140,7 @@ public class TestServerConnection extends TestCase
   //
 
   @Test
-  public void testCalculator2() throws Exception{
+  public void testSignSqoare() throws Exception{
     Server.reset();
     Socket socket = new Socket();
     socket.connect(new InetSocketAddress(host,getPorts()));
@@ -172,7 +170,7 @@ public class TestServerConnection extends TestCase
   //окргулить до целый часть(sign)
 
   @Test
-  public void testCalculator3() throws Exception {
+  public void testCalculatorThread() throws Exception {
     Server.reset();
     Socket socket1 = new Socket();
     Socket socket2 = new Socket();

@@ -1,4 +1,5 @@
 package com.tibbo;
+
 import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
@@ -16,10 +17,11 @@ public class Server
     private Thread thread;
     private List<Thread> list = new ArrayList<>();
 
-    public static void main(String[] args) throws Exception
-    {
+
+    public static void main(String[] args) throws Exception {
         INSTANCE.launch(5555);
     }
+
 
 
     static void increase()

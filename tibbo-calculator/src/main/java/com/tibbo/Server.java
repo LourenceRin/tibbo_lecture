@@ -16,13 +16,21 @@ public class Server
     private static int messageCounter = 0;
     private Thread thread;
     private List<Thread> list = new ArrayList<>();
+    private static Integer port = 5555;
 
 
-    public static void main(String[] args) throws Exception {
-        INSTANCE.launch(5555);
+    public static void main(String[] args){
+        try {
+            port = Integer.parseInt(args[0]);
+        } catch (Exception f) {
+            System.out.println(f);
+        }
+        try {
+            INSTANCE.launch(port);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
 
     static void increase()
     {

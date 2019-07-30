@@ -1,5 +1,6 @@
 package com.tibbo;
 
+import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -10,13 +11,19 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
-public class TelegramBot extends BotOptions {
+public class TelegramBotApi extends TelegramLongPollingBot {
     private static final String USERNAME = "Lourence_bot";
     private static final String TOKEN = "914836872:AAF6sEyC4igukZ860X7bZWorhAjs0AE8VUQ";
-    private Socket socket = new Socket();
+    private Socket socket;
 
     private static int getPorts(){
         return 5555;
+    }
+
+    TelegramBotApi()
+    {
+        super(new MyDefaultBotOptions());
+        socket = new Socket();
     }
     private String getMsg(String msg){
         try {

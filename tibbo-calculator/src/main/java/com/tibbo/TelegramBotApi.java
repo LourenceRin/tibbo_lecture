@@ -11,14 +11,12 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+import static com.tibbo.ServerMessagesHelper.PORT;
+
 public class TelegramBotApi extends TelegramLongPollingBot {
     private static final String USERNAME = "Lourence_bot";
     private static final String TOKEN = "914836872:AAF6sEyC4igukZ860X7bZWorhAjs0AE8VUQ";
     private Socket socket;
-
-    private static int getPort(){
-        return 5555;
-    }
 
     TelegramBotApi()
     {
@@ -28,7 +26,7 @@ public class TelegramBotApi extends TelegramLongPollingBot {
     private String getMsg(String msg){
         try {
             String host = "localhost";
-            socket.connect(new InetSocketAddress(host, getPort()));
+            socket.connect(new InetSocketAddress(host, PORT));
             DataOutputStream outStream= new DataOutputStream(socket.getOutputStream());
             DataInputStream inputStream = new DataInputStream(socket.getInputStream());
             outStream.writeUTF(msg);

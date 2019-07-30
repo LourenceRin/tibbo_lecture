@@ -8,18 +8,20 @@ import java.io.DataOutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 
+import static com.tibbo.ServerMessagesHelper.PORT;
+
 public class TestServerConnection extends TestCase
 {
   private Server server;
-  private static int port = 5555;
+
   private static String host = "localhost";
 
-  private int getPorts(){
-    return port;
+  private int getPort(){
+    return PORT;
   }
 
   private void increasePort(){
-    port++;
+    PORT++;
   }
 
 
@@ -64,7 +66,7 @@ public class TestServerConnection extends TestCase
   {
     //
     Socket socket = new Socket();
-    socket.connect(new InetSocketAddress(host,getPorts()));
+    socket.connect(new InetSocketAddress(host,getPort()));
     DataOutputStream outStream= new DataOutputStream(socket.getOutputStream());
     DataInputStream inputStream = new DataInputStream(socket.getInputStream());
 
@@ -104,7 +106,7 @@ public class TestServerConnection extends TestCase
     Socket socket = new Socket();
     Server.reset();
     String result;
-    socket.connect(new InetSocketAddress(host, getPorts()));
+    socket.connect(new InetSocketAddress(host, getPort()));
     DataOutputStream outStream= new DataOutputStream(socket.getOutputStream());
     DataInputStream inputStream = new DataInputStream(socket.getInputStream());
 
@@ -143,7 +145,7 @@ public class TestServerConnection extends TestCase
   public void testSignSqoare() throws Exception{
     Server.reset();
     Socket socket = new Socket();
-    socket.connect(new InetSocketAddress(host,getPorts()));
+    socket.connect(new InetSocketAddress(host,getPort()));
     DataInputStream inputStream = new DataInputStream(socket.getInputStream());
     DataOutputStream outputStream = new DataOutputStream(socket.getOutputStream());
 
@@ -174,8 +176,8 @@ public class TestServerConnection extends TestCase
     Server.reset();
     Socket socket1 = new Socket();
     Socket socket2 = new Socket();
-    socket1.connect(new InetSocketAddress(host, getPorts()));
-    socket2.connect(new InetSocketAddress(host, getPorts()));
+    socket1.connect(new InetSocketAddress(host, getPort()));
+    socket2.connect(new InetSocketAddress(host, getPort()));
     DataOutputStream outStream1 = new DataOutputStream(socket1.getOutputStream());
     DataInputStream inputStream1 = new DataInputStream(socket1.getInputStream());
     DataOutputStream outStream2 = new DataOutputStream(socket2.getOutputStream());
@@ -215,7 +217,7 @@ public class TestServerConnection extends TestCase
   protected void setUp() throws Exception
   {
     server = new Server();
-    server.launch(getPorts());
+    server.launch(getPort());
   }
 
   @Override

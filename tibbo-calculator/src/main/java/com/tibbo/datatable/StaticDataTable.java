@@ -40,9 +40,7 @@ public class StaticDataTable
     tableFormat.addField(seventhfieldFormat);
     tableFormat.addField(eighththfieldFormat);
 
-    DataTable table = new SimpleDataTable(tableFormat);
-
-    return table;
+      return new SimpleDataTable(tableFormat);
   }
   
   public static DataTable getInnerTable()

@@ -12,23 +12,23 @@ public class StaticDataTable
   {
     TableFormat tableFormat = new TableFormat(1, 1);
 
-    FieldFormat<Integer> fieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, "Индекс", 5, true);
+    FieldFormat fieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, StaticDataTableHelper.INTEGER_DESCRIPTION, StaticDataTableHelper.INTEGER_DEFAULT_VALUE, true);
 
-    FieldFormat<Double> secondfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DOUBLE_FIELD, FieldFormat.DOUBLE_FIELD, "Имя", 3.4, true);
+    FieldFormat secondfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DOUBLE_FIELD, FieldFormat.DOUBLE_FIELD, StaticDataTableHelper.DOUBLE_DESCRIPTION, 3.4, true);
 
-    FieldFormat<Boolean> thirdfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_BOOLEAN_FIELD, FieldFormat.BOOLEAN_FIELD, "Фамилия", true, true);
+    FieldFormat thirdfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_BOOLEAN_FIELD, FieldFormat.BOOLEAN_FIELD, StaticDataTableHelper.BOOLEAN_DESCRIPTION, true, true);
 
-    FieldFormat<Integer> fourthfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_LONG_FIELD, FieldFormat.LONG_FIELD, "Номер", 3, true);
+    FieldFormat fourthfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_LONG_FIELD, FieldFormat.LONG_FIELD, StaticDataTableHelper.LONG_DESCRIPTION, 3, true);
 
-    FieldFormat <Double>fifthfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_FLOAT_FIELD, FieldFormat.FLOAT_FIELD, "первое значение", 1.5, true);
+    FieldFormat fifthfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_FLOAT_FIELD, FieldFormat.FLOAT_FIELD, StaticDataTableHelper.FLOAT_DESCRIPTION, 1.5, true);
 
-    FieldFormat <String>sixthfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_STRING_TEST, FieldFormat.STRING_FIELD,"второе значение", "Default value" , true);
+    FieldFormat sixthfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_STRING_TEST, FieldFormat.STRING_FIELD,StaticDataTableHelper.STRING_DESCRIPTION, "Default value" , true);
     sixthfieldFormat.setHidden(true);
     sixthfieldFormat.setReadonly(true);
 
-    FieldFormat<Date> seventhfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DATE_FIELD, FieldFormat.DATE_FIELD, "третье значение", new Date(1212121212121L), true);
+    FieldFormat seventhfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DATE_FIELD, FieldFormat.DATE_FIELD, StaticDataTableHelper.DATE_DESCRIPTION, new Date(1212121212121L), true);
 
-    FieldFormat<DataTable> eighththfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DATATABLE_FIELD, FieldFormat.DATATABLE_FIELD, "четвертое значение", new SimpleDataTable(), true);
+    FieldFormat eighththfieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DATATABLE_FIELD, FieldFormat.DATATABLE_FIELD, StaticDataTableHelper.DATATABLE_DESCRIPTION, new SimpleDataTable(), true);
 
 
     tableFormat.addField(fieldFormat);//field descriptor to field format
@@ -46,12 +46,12 @@ public class StaticDataTable
   public static DataTable getInnerTable()
   {
 
-    TableFormat tableFormat = new TableFormat(5, 5);
-    FieldFormat<DataTable> firstFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DATATABLE_FIELD, FieldFormat.DATATABLE_FIELD, "четвертое значение", getSimpleTable(), true);
-    FieldFormat<Integer> seconfFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, "Индекс", 5, true);
-    FieldFormat<Integer> thirdieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, "Индекс", 6, true);
-    FieldFormat<Integer> fourththFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, "Индекс", 7, true);
-    FieldFormat<Integer> fifthFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, "Индекс", 8, true);
+    TableFormat tableFormat = new TableFormat();
+    FieldFormat firstFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_DATATABLE_FIELD, FieldFormat.DATATABLE_FIELD, StaticDataTableHelper.DATATABLE_DESCRIPTION, getSimpleTable(), true);
+    FieldFormat seconfFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, StaticDataTableHelper.INTEGER_DESCRIPTION, 5, true);
+    FieldFormat thirdieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, StaticDataTableHelper.INTEGER_DESCRIPTION, 6, true);
+    FieldFormat fourththFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, StaticDataTableHelper.INTEGER_DESCRIPTION, 7, true);
+    FieldFormat fifthFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, StaticDataTableHelper.INTEGER_DESCRIPTION, 8, true);
 
     tableFormat.addField(firstFieldFormat);
     tableFormat.addField(seconfFieldFormat);
@@ -77,10 +77,10 @@ public class StaticDataTable
   
   public static DataTable getBigTable()
   {
-    TableFormat tableFormat = new TableFormat(50, 50);
+    TableFormat tableFormat = new TableFormat();
 
-    FieldFormat <String>stringFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_STRING_TEST, FieldFormat.STRING_FIELD,"второе значение", "10" , true);
-    FieldFormat<Integer> integerFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, "Индекс", 10, true);
+    FieldFormat stringFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_STRING_TEST, FieldFormat.STRING_FIELD,StaticDataTableHelper.STRING_DESCRIPTION , "10" , true);
+    FieldFormat integerFieldFormat = FieldFormat.create(StaticDataTableHelper.FIELD_INTEGER_TEST, FieldFormat.INTEGER_FIELD, StaticDataTableHelper.INTEGER_DESCRIPTION, 10, true);
 
     tableFormat.addField(integerFieldFormat);
     tableFormat.addField(stringFieldFormat);

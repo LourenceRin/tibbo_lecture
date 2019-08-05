@@ -3,31 +3,23 @@ import com.tibbo.aggregate.common.Log;
 import com.tibbo.aggregate.common.agent.Agent;
 import com.tibbo.aggregate.common.agent.AgentContext;
 import com.tibbo.aggregate.common.agent.HistoricalValue;
-import com.tibbo.aggregate.common.context.CallerController;
-import com.tibbo.aggregate.common.context.Context;
-import com.tibbo.aggregate.common.context.ContextException;
-import com.tibbo.aggregate.common.context.DefaultContextEventListener;
-import com.tibbo.aggregate.common.context.EventDefinition;
-import com.tibbo.aggregate.common.context.FunctionDefinition;
-import com.tibbo.aggregate.common.context.FunctionImplementation;
-import com.tibbo.aggregate.common.context.RequestController;
-import com.tibbo.aggregate.common.context.VariableDefinition;
-import com.tibbo.aggregate.common.context.VariableGetter;
-import com.tibbo.aggregate.common.context.VariableSetter;
+import com.tibbo.aggregate.common.context.*;
 import com.tibbo.aggregate.common.data.Event;
-import com.tibbo.aggregate.common.datatable.DataRecord;
-import com.tibbo.aggregate.common.datatable.DataTable;
-import com.tibbo.aggregate.common.datatable.SimpleDataTable;
-import com.tibbo.aggregate.common.datatable.TableFormat;
+import com.tibbo.aggregate.common.datatable.*;
 import com.tibbo.aggregate.common.device.DisconnectionException;
 import com.tibbo.aggregate.common.event.EventHandlingException;
 import com.tibbo.aggregate.common.protocol.RemoteServer;
 import com.tibbo.aggregate.common.util.SyntaxErrorException;
+import com.tibbo.datatable.StaticDataTable;
+import com.tibbo.datatable.StaticDataTableHelper;
+
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import static com.tibbo.datatable.StaticDataTable.getSimpleTable;
 
 public class DemoAgent {
     private static final String V_SETTING = "setting";
@@ -47,6 +39,11 @@ public class DemoAgent {
     private static final TableFormat EFT_EVENT;
     private static DataTable setting;
     private static long period;
+
+    private static final TableFormat VFT_TEST = new TableFormat(1, 100);
+    private static DataTable setting_SimpleTable;
+    public static final TableFormat VFT_TEST2 = new TableFormat();
+
 
     public DemoAgent() {
     }
@@ -170,6 +167,36 @@ public class DemoAgent {
             }
         });
         context.addVariableDefinition(vd);
+        vd = new VariableDefinition("SimpleDataTable", StaticDataTable.getSimpleTable().getFormat(), true, true, "SimpleDataTable", "remote");
+        vd.setGetter(new VariableGetter() {
+            public DataTable get(Context con, VariableDefinition def, CallerController caller, RequestController request) throws ContextException {
+                return StaticDataTable.getSimpleTable();
+            }
+        });
+        context.addVariableDefinition(vd);
+        vd = new VariableDefinition("InnerTable", StaticDataTable.getInnerTable().getFormat(), true, true, "InnerTable", "remote");
+        vd.setGetter(new VariableGetter() {
+            public DataTable get(Context con, VariableDefinition def, CallerController caller, RequestController request) throws ContextException {
+                return StaticDataTable.getInnerTable();
+            }
+        });
+        context.addVariableDefinition(vd);
+        vd = new VariableDefinition("BigTable", StaticDataTable.getBigTable().getFormat(), true, true, "BigTable", "remote");
+        vd.setGetter(new VariableGetter() {
+            public DataTable get(Context con, VariableDefinition def, CallerController caller, RequestController request) throws ContextException {
+                return StaticDataTable.getBigTable();
+            }
+        });
+        /*
+        vd.setSetter(new VariableSetter() {
+            public boolean set(Context con, VariableDefinition def, CallerController caller, RequestController request, DataTable value) throws ContextException {
+                DemoAgent.setting_SimpleTable = value;
+                return true;
+            }
+        });
+
+         */
+        context.addVariableDefinition(vd);
         FunctionDefinition fd = new FunctionDefinition("operation", FIFT_OPERATION, FOFT_OPERATION, "Agent Operation", "remote");
         fd.setImplementation(new FunctionImplementation() {
             public DataTable execute(Context con, FunctionDefinition def, CallerController caller, RequestController request, DataTable parameters) throws ContextException {
@@ -187,6 +214,9 @@ public class DemoAgent {
                 Log.DEVICE_AGENT.info("Server has confirmed event with ID: " + event.getData().rec().getLong("id"));
             }
         });
+
+
+
     }
 
     static {
@@ -198,6 +228,13 @@ public class DemoAgent {
         EFT_EVENT = new TableFormat(1, 1, "<data><F><D=Data>");
         setting = new SimpleDataTable(VFT_SETTING, true);
         period = 5000L;
+
+        //VFT_TEST = new TableFormat(1, 1, "<period><L><A=5000><D=Event Generation Period><V=<L=100 100000000>><E=period>");
+        //VFT_TEST = new TableFormat(FieldFormat.create(StaticDataTableHelper.FIELD_DATATABLE_FIELD, FieldFormat.DATATABLE_FIELD, StaticDataTableHelper.DATATABLE_DESCRIPTION, getSimpleTable(), true));
+
+
+        VFT_TEST.addField(FieldFormat.create(StaticDataTableHelper.FIELD_DATATABLE_FIELD, FieldFormat.DATATABLE_FIELD, StaticDataTableHelper.DATATABLE_DESCRIPTION, getSimpleTable(), true));
+        setting_SimpleTable = new SimpleDataTable(VFT_TEST, true);
     }
 
     private static class DemoAgentContext extends AgentContext {

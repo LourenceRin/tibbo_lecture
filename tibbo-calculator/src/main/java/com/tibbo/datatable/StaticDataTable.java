@@ -90,7 +90,7 @@ public class StaticDataTable
 
 
     for(int i =0; i < 50; i++){
-      if (i == 44){
+      if (i == 45){
         table.addRecord(50,"50",123);
       }else {
         table.addRecord(10, "10", 123);
